@@ -1,5 +1,6 @@
 import 'package:bloc_app/features/cart/ui/cart.dart';
 import 'package:bloc_app/features/home/bloc/home_bloc.dart';
+import 'package:bloc_app/features/home/ui/product_tile_widget.dart';
 import 'package:bloc_app/features/wishlist/ui/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,6 +46,7 @@ class _HomeState extends State<Home> {
             );
 
           case const (HomeLoadedSuccessState):
+            final successState = state as HomeLoadedSuccessState;
             return Scaffold(
               appBar: AppBar(
                 title: const Text("Barbara's Grocery app"),
@@ -67,6 +69,12 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
+              body: ListView.builder(
+                  itemCount: successState.products.length,
+                  itemBuilder: (context, index) {
+                    return ProductTileWidget(
+                        productDataModel: successState.products[index]);
+                  }),
             );
           case const (HomeErrorState):
             return const Scaffold(
