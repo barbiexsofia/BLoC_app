@@ -20,3 +20,15 @@ class HomeErrorState extends HomeState {}
 class HomeNavigateToWishlistPageActionState extends HomeActionState {}
 
 class HomeNavigateToCartPageActionState extends HomeActionState {}
+
+class HomeProductItemAddedToWishlistActionState extends HomeActionState {
+  final ProductDataModel clickedProduct;
+
+  HomeProductItemAddedToWishlistActionState({required this.clickedProduct});
+}
+
+class HomeProductItemAddedToCartActionState extends HomeActionState {
+  final ProductDataModel clickedProduct;
+
+  HomeProductItemAddedToCartActionState({required this.clickedProduct});
+}

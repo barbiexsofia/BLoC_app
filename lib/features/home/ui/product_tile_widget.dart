@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 
 class ProductTileWidget extends StatelessWidget {
   final ProductDataModel productDataModel;
-  final HomeBloc homeBloc = HomeBloc();
+  final HomeBloc homeBloc;
 
-  ProductTileWidget({super.key, required this.productDataModel});
+  const ProductTileWidget(
+      {super.key, required this.productDataModel, required this.homeBloc});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,8 @@ class ProductTileWidget extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      //homeBloc.add(HomeWishlistButtonNavigateEvent());
+                      homeBloc.add(HomeProductWishlistButtonClickedEvent(
+                          clickedProduct: productDataModel));
                     },
                     icon: const Icon(
                       Icons.favorite_border,
@@ -53,7 +55,8 @@ class ProductTileWidget extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {
-                      //homeBloc.add(HomeCartButtonNavigateEvent());
+                      homeBloc.add(HomeProductCartButtonClickedEvent(
+                          clickedProduct: productDataModel));
                     },
                     icon: const Icon(
                       Icons.shopping_bag_outlined,
