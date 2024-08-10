@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
       ),
-      home: Home(),
+      home: const Home(),
     );
   }
 }
